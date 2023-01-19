@@ -1,0 +1,15 @@
+version: "3.1"
+services:
+  challenge_db:
+    image: mysql:5.7
+    volumes:
+      - ./mysql/init.sql:/docker-entrypoint-initdb.d/init.sql
+    command: --init-file /docker-entrypoint-initdb.d/init.sql
+    ports:
+      - "3312:3306"
+    environment:
+      MYSQL_DATABASE: challenge_db
+      MYSQL_ROOT_USER: user
+      MYSQL_USER: user
+      MYSQL_ROOT_PASSWORD: secret
+      MYSQL_PASSWORD: secret
